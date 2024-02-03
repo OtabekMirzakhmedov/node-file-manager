@@ -5,7 +5,10 @@ const {
   handleInvalidInput,
 } = require("./utils");
 const { listFilesAndFolders } = require("./directoryListing");
-const { changeWorkingDirectory, navigateToParentDirectory } = require("./navigation");
+const {
+  changeWorkingDirectory,
+  navigateToParentDirectory,
+} = require("./navigation");
 
 function startFileManager(username) {
   displayWelcomeMessage(username);
@@ -39,7 +42,7 @@ function startFileManager(username) {
   });
 
   process.on("SIGINT", () => {
-    console.log(); // Add a new line for readability
+    console.log();
     displayGoodbyeMessage(username);
     process.exit(0);
   });

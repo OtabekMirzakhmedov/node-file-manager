@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-// Function to list files and folders in the current directory
 function listFilesAndFolders() {
   const currentDirectory = process.cwd();
 
@@ -27,27 +26,23 @@ function listFilesAndFolders() {
     directories.sort();
     regularFiles.sort();
 
-    // Determine maximum lengths for Name and Type columns
     const maxLengthName =
       Math.max(
         ...directories.map((dir) => dir.length),
         ...regularFiles.map((file) => file.length)
-      ) + 2; // Add padding
-    const maxLengthType = "Type".length + 2; // Add padding
+      ) + 2;
+    const maxLengthType = "Type".length + 2;
 
-    // Print header
     console.log("-".repeat(30 + maxLengthName + maxLengthType));
     console.log(`Index\t|\t${padCenter("Name", maxLengthName)}\t|\tType`);
-    console.log("-".repeat(30 + maxLengthName + maxLengthType)); // Line separating header from content
+    console.log("-".repeat(30 + maxLengthName + maxLengthType));
 
-    // Print directories
     directories.forEach((directory, index) => {
       console.log(
         `${index + 1}\t|\t${padCenter(directory, maxLengthName)}\t|\tDirectory`
       );
     });
 
-    // Print regular files
     regularFiles.forEach((file, index) => {
       console.log(
         `${directories.length + index + 1}\t|\t${padCenter(
@@ -60,7 +55,6 @@ function listFilesAndFolders() {
   });
 }
 
-// Function to pad the string to the center with spaces
 function padCenter(str, len) {
   const padSize = len - str.length;
   const padStart = Math.floor(padSize / 2);

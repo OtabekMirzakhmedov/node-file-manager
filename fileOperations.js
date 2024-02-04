@@ -13,14 +13,14 @@ function readFile(filePath) {
   });
 
   fileReadStream.on("error", (error) => {
-    console.log("Error reading file:", error);
+    console.log("Operation Failed");
   });
 }
 
 function createFile(fileName) {
   fs.writeFile(fileName, "", (err) => {
     if (err) {
-      console.log("Error creating file:", err);
+      console.log("Operation Failed");
     } else {
       console.log("File created successfully.");
     }
@@ -32,7 +32,7 @@ function renameFile(oldFilePath, newFileName) {
 
   fs.rename(oldFilePath, newFilePath, (err) => {
     if (err) {
-      console.log("Error renaming file:", err);
+      console.log("Operation Failed");
     } else {
       console.log("File renamed successfully.");
     }
@@ -51,11 +51,11 @@ function copyFile(sourceFilePath, targetDirectory) {
   fileReadStream.pipe(fileWriteStream);
 
   fileReadStream.on("error", (error) => {
-    console.log("Error reading file:", error);
+    console.log("Operation Failed");
   });
 
   fileWriteStream.on("error", (error) => {
-    console.log("Error writing file:", error);
+    console.log("Operation Failed");
   });
 
   fileWriteStream.on("finish", () => {
@@ -71,11 +71,11 @@ function moveFile(sourceFilePath, targetDirectory) {
 
   fs.copyFile(sourceFilePath, targetFilePath, (err) => {
     if (err) {
-      console.log("Error moving file:", err);
+      console.log("Operation Failed");
     } else {
       fs.unlink(sourceFilePath, (err) => {
         if (err) {
-          console.log("Error deleting source file after move:", err);
+          console.log("Operation Failed");
         } else {
           console.log("File moved successfully.");
         }
@@ -87,7 +87,7 @@ function moveFile(sourceFilePath, targetDirectory) {
 function deleteFile(filePath) {
   fs.unlink(filePath, (err) => {
     if (err) {
-      console.log("Error deleting file:", err);
+      console.log("Operation Failed");
     } else {
       console.log("File deleted successfully.");
     }

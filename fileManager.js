@@ -60,9 +60,11 @@ function startFileManager(username) {
                 break;
             case "cat":
                 readFile(args[0]);
+                printCurrentDirectory();
                 break;
             case "add":
                 createFile(args[0]);
+                printCurrentDirectory();
                 break;
             case "rn":
                 renameFile(args[0], args[1]);
@@ -77,6 +79,7 @@ function startFileManager(username) {
                 break;
             case "rm":
                 deleteFile(args[0]);
+                printCurrentDirectory();
                 break;
             case "cwd":
                 printCurrentDirectory();
